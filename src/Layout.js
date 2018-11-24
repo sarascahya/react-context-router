@@ -1,6 +1,16 @@
 import React, { Component } from 'react';
 
 class Layout extends Component {
+  state = {
+    isToggled: false
+  }
+
+  handleToggle = () => {
+    this.setState({
+      isToggled: !this.state.isToggled
+    })
+  }
+
   render() {
     return(
       <div className="container">
@@ -27,12 +37,15 @@ class Layout extends Component {
           </div>
           <div className="navbar-end">
             <a className="navbar-item">Home</a>
-            <div className="dropdown navbar-item ">
+            <div className={
+              `dropdown navbar-item ${this.state.isToggled ? 'is-active' : '' }`
+            }>
               <div className="dropdown-trigger">
                 <button
                   className="button"
                   aria-haspopup="true"
                   aria-controls="dropdown-menu"
+                  onClick={this.handleToggle}
                 >
                   <span>en</span>
                   <span className="icon is-small">
