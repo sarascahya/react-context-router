@@ -15,7 +15,6 @@ class ProductList extends React.Component {
               <div className="columns">
                 {/* looping product use map */}
                 {products.map(product => {
-                  console.log(product);
                   return(
                     <div key={product.slug} className="column">
                       <Link to={`/product/${product.slug}`}>

@@ -2,6 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import products from './products';
 import Layout from './Layout';
+import Context from './context';
+import trans from './trans';
 
 class ProductDetail extends React.Component {
   render(){
@@ -46,7 +48,15 @@ class ProductDetail extends React.Component {
               {product.description}
             </div>
             <div className="column">
-              <a className="button is-primary is-uppercase">Add to Cart</a>
+              
+              <Context.Consumer>
+                {context => {
+                  return(
+                    <a className="button is-primary is-uppercase">{trans[context.state.language]['Add to Cart']}</a>
+                  );
+                }}
+              </Context.Consumer>
+              
             </div>
           </div>
         </div>
