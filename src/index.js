@@ -1,9 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import ProductList from './ProductList';
 
 class App extends React.Component {
   render() {
-    return <div>Heiyoo</div>;
+    return <div>
+      <ProductList />
+    </div>;
   }
 }
 
