@@ -1,8 +1,13 @@
 import React from 'react'
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
+import products from './products';
 
 class ProductDetail extends React.Component {
   render(){
+    // get slug
+    const slug = this.props.match.params.slug;
+    // find match product
+    const product = products.find(product => product.slug === slug)
     return(
       <div className="container">
         <nav className="navbar" aria-label="main navigation">
@@ -59,33 +64,33 @@ class ProductDetail extends React.Component {
             <nav className="breadcrumb" aria-label="breadcrumbs">
               <ul>
                 <li>
-                  <a href="/">Products</a>
+                  <Link to="/">Products</Link>
                 </li>
                 <li className="is-active">
                   <a href="#" aria-current="page">
-                    Rustic Plastic Bacon
+                    {product.title}
                   </a>
                 </li>
               </ul>
             </nav>
-            <h3 className="title">Rustic Plastic Bacon</h3>
+            <h3 className="title">{product.title}</h3>
           </div>
         </div>
         <div className="columns">
           <div className="column is-5">
             <figure className="image">
               <img
-                alt="Rustic Plastic Bacon"
-                src="https://images.nike.com/is/image/DotCom/PDP_HERO/132170C_001_A_PREM/converse-chuck-taylor-all-star-leather-unisex-high-top-shoe.jpg"
+                alt={product.title}
+                src={product.imageUrl}
               />
             </figure>
           </div>
           <div className="column is-5">
             <div className="column has-text-weight-semibold has-text-dark is-size-4">
-              320.00
+              {product.price}
             </div>
             <div className="column">
-              Dolorem commodi id eveniet neque amet voluptatem ipsa.
+              {product.description}
             </div>
             <div className="column">
               <a className="button is-primary is-uppercase">Add to Cart</a>
